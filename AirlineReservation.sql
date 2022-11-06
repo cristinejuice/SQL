@@ -43,7 +43,7 @@ FROM Ticket_Info AS TI
 JOIN Flight_transaction AS FT
 ON TI.customer_id = ft.customer_id;
 
-/* Count all the tickets by its cabin_type where the departure date is on 2022-09-29 and destination is Manila. */
+/* Count all the tickets by its cabin_type where the destination is Manila. */
 
 SELECT COUNT(DISTINCT(CASE WHEN cabin_type = 'economy' THEN 'economy' END)) AS economy,
 COUNT(DISTINCT(CASE WHEN cabin_type = 'premium economy' THEN 'premium_economy' END)) AS premium_economy,
@@ -52,6 +52,5 @@ COUNT(DISTINCT(CASE WHEN cabin_type = 'first class' THEN 'first_class' END)) AS 
 FROM Ticket_Info AS TI
 JOIN Flight_transaction AS FT
 ON TI.customer_id = ft.customer_id
-WHERE departure_time = 2022-09-29
-AND destination = 'Manila';
+WHERE destination = 'Manila';
 
