@@ -1,0 +1,29 @@
+/* Write a query to list the candidates who possess all of the required skills for the job. 
+Sort the the output by candidate ID in ascending order. */
+
+SELECT candidate_id
+FROM candidates
+WHERE skill IN ('Python', 'Tableau', 'PostgreSQL')
+GROUP BY candidate_id
+HAVING COUNT(skill) = 3
+ORDER BY candidate_id;
+
+/* Assume you are given the tables below about Facebook pages and page likes. 
+Write a query to return the page IDs of all the Facebook pages that don't have any likes. 
+The output should be in ascending order. */
+
+SELECT page_id
+FROM pages
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM page_likes AS likes
+  WHERE likes.page_id = pages.page_id);
+
+/* Write a query to compare the viewership on laptops versus mobile devices. */
+
+SELECT 
+  COUNT(CASE WHEN device_type = 'laptop' THEN 1 ELSE NULL END)
+  AS laptop_views, 
+  COUNT(CASE WHEN device_type IN ('tablet', 'phone') THEN 1 ELSE NULL END) 
+  AS mobile_views 
+FROM viewership;
