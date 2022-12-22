@@ -100,7 +100,7 @@ JOIN [COVID Data Exploration]..CovidVaccinations$ vac
 WHERE dea.continent IS NOT NULL
 ORDER BY 2,3
 
----Using CTE
+----Using CTE
 
 WITH PopsvsVac (Continet, Location, Date, Population, New_Vaccinations, RollingPeopleVaccinated)
 AS 
